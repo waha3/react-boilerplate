@@ -18,7 +18,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      template: 'app/index.html',
+      template: 'app/index.tpl.html',
       inject: 'body',
       filename: 'index.html'
     }),
@@ -51,6 +51,9 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!postcss')
+    }, {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader'
     }]
   },
   postcss: [

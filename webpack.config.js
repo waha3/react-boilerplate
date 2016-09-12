@@ -17,7 +17,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'app/index.html',
+      template: 'app/index.tpl.html',
       inject: 'body',
       filename: 'index.html'
     }),
@@ -41,7 +41,10 @@ module.exports = {
       loader: 'json'
     }, {
       test: /\.css$/,
-      loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
+      loader: 'style-loader!css-loader'
+    }, {
+      test: /\.less$/,
+      loader: 'style-loader!css-loader!less-loader'
     }]
   }
 };
